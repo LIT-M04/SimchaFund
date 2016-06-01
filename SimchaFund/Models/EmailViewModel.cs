@@ -8,6 +8,6 @@ namespace SimchaFund.Models
 {
     public class EmailViewModel
     {
-        public IEnumerable<Contribution> Contributions { get; set; } 
+        public IEnumerable<string> Contributors { get; set; } 
     }
 }

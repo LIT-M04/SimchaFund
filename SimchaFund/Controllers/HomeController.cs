@@ -110,7 +110,11 @@ namespace SimchaFund.Controllers
             var manager = new SimchaFundManager(Properties.Settings.Default.ConStr);
             IEnumerable<Contribution> contributions = manager.GetContributionsForSimcha(simchaId);
             var viewModel = new EmailViewModel();
-            viewModel.Contributions = contributions;
+            viewModel.Contributors = contributions.Select(c =>
+            {
+                var contributor = manager.GetContributor(c.ContributorId);
+                return contributor.FirstName + " " + contributor.LastName;
+            });
             return View(viewModel);
         }
     }
